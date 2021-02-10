@@ -16,7 +16,7 @@ class TaulerTest {
     private Tauler tauler;
 
     @BeforeEach
-    void reiniciar(){
+    void reiniciar() {
         this.tauler = new Tauler();
         this.tauler.inicialitzarPartida("paraula", 4);
     }
@@ -33,19 +33,19 @@ class TaulerTest {
 
     @Test
     void verificarEntradaIncorrecte() {
-        assertEquals("Lletra incorrecte",this.tauler.verificar("ll"));
+        assertEquals("Lletra incorrecte", this.tauler.verificar("ll"));
     }
 
     @Test
     void verificarEntradaCorrecteEncertat() {
         this.tauler.verificar("a");
-        assertArrayEquals(new String[]{ null,"a",null,"a",null,null,"a" },this.tauler.getPalabraEndevinada());
+        assertArrayEquals(new String[]{null, "a", null, "a", null, null, "a"}, this.tauler.getPalabraEndevinada());
     }
 
     @Test
     void verificarEntradaCorrecteErrada() {
         this.tauler.verificar("n");
-        assertEquals(3,this.tauler.getIntents());
+        assertEquals(3, this.tauler.getIntents());
     }
 
     @Test
@@ -68,8 +68,6 @@ class TaulerTest {
         this.tauler.verificar("l");
         assertEquals("paraula", this.tauler.imprimir());
     }
-
-
 
     @Test
     void imprimirVidesPlural() {
