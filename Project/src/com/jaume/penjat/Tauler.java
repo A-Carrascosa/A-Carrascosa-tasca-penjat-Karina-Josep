@@ -10,10 +10,12 @@ package com.jaume.penjat;
  * @author Karina
  */
 public class Tauler {
+
     private int intents;
     private String palabraEndevinada;
     private String paraulaSecreta;
-    
+    private int vides;
+
     public int getIntents() {
         return intents;
     }
@@ -36,26 +38,38 @@ public class Tauler {
 
     public void setParaulaSecreta(String paraulaSecreta) {
         this.paraulaSecreta = paraulaSecreta;
-    }    
-    
-    public void inicialitzarPartida(){
-        
     }
-    
-    public void imprimir(){
-        
+
+    public void inicialitzarPartida() {
+
     }
-    
-    public void imprimirVides(){
-        
+
+    public String imprimir() {
+        return palabraEndevinada;
     }
-    
-    public void verificar(){
-        
+
+    public String imprimirVides() {
+        return "Et queden " + intents + " de " + vides;
     }
-    
-    public void hasGuanyat(){
-        
+
+    public String verificar(String letra) {
+        boolean encontrado = false;
+        for (int i = 0; i < paraulaSecreta.length(); i++) {
+            if (paraulaSecreta.charAt(i) == letra.charAt(0)) {
+                char[] myNameChars = palabraEndevinada.toCharArray();
+                myNameChars[i] = letra.charAt(0);
+                palabraEndevinada = String.valueOf(myNameChars);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            intents -= 1;
+        }
+        return " ";
     }
-    
+
+    public void hasGuanyat() {
+
+    }
+
 }
