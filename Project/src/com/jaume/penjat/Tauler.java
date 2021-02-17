@@ -87,15 +87,11 @@ public class Tauler {
     }
     
     public boolean hasGuanyat(){
-        if (palabraEndevinada.equals(palabraEndevinada)){
+        if (palabraEndevinada.equals(paraulaSecreta)){
             return true;
         } else {
             return false;
         }
-    }
-
-    public void hasGuanyat() {
-
     }
 
 }
