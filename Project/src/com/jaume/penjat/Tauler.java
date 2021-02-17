@@ -37,8 +37,8 @@ public class Tauler {
     }
 
     public void setPalabraEndevinada(String palabraEndevinada) {
-        for (int i=0; i < palabraEndevinada.length(); i++){
-            if (palabraEndevinada.charAt(i) != ' '){
+        for (int i = 0; i < palabraEndevinada.length(); i++) {
+            if (palabraEndevinada.charAt(i) != ' ') {
                 char[] myNameChars = palabraEndevinada.toCharArray();
                 myNameChars[i] = '_';
                 palabraEndevinada = String.valueOf(myNameChars);
@@ -53,9 +53,9 @@ public class Tauler {
 
     public void setParaulaSecreta(String paraulaSecreta) {
         this.paraulaSecreta = paraulaSecreta;
-    }    
-    
-    public void inicialitzarPartida(String paraula, int intents){
+    }
+
+    public void inicialitzarPartida(String paraula, int intents) {
         setParaulaSecreta(paraula);
         setPalabraEndevinada(paraula);
         setIntents(intents);
@@ -72,22 +72,26 @@ public class Tauler {
 
     public String verificar(String letra) {
         boolean encontrado = false;
-        for (int i = 0; i < paraulaSecreta.length(); i++) {
-            if (paraulaSecreta.charAt(i) == letra.charAt(0)) {
-                char[] myNameChars = palabraEndevinada.toCharArray();
-                myNameChars[i] = letra.charAt(0);
-                palabraEndevinada = String.valueOf(myNameChars);
-                encontrado = true;
+        if (letra.length() > 1) {
+            return "Lletra incorrecte";
+        } else {
+            for (int i = 0; i < paraulaSecreta.length(); i++) {
+                if (paraulaSecreta.charAt(i) == letra.charAt(0)) {
+                    char[] myNameChars = palabraEndevinada.toCharArray();
+                    myNameChars[i] = letra.charAt(0);
+                    palabraEndevinada = String.valueOf(myNameChars);
+                    encontrado = true;
+                }
             }
+            if (!encontrado) {
+                intents -= 1;
+            }
+            return " ";
         }
-        if (!encontrado) {
-            intents -= 1;
-        }
-        return " ";
     }
-    
-    public boolean hasGuanyat(){
-        if (palabraEndevinada.equals(paraulaSecreta)){
+
+    public boolean hasGuanyat() {
+        if (palabraEndevinada.equals(paraulaSecreta)) {
             return true;
         } else {
             return false;
