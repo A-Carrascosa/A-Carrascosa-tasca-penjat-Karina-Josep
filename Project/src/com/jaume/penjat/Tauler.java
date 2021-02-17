@@ -12,9 +12,9 @@ package com.jaume.penjat;
 public class Tauler {
 
     private int intents;
+    private int vides;
     private String palabraEndevinada;
     private String paraulaSecreta;
-    private int vides;
 
     public int getIntents() {
         return intents;
@@ -24,11 +24,26 @@ public class Tauler {
         this.intents = intents;
     }
 
+    public int getVides() {
+        return vides;
+    }
+
+    public void setVides(int vides) {
+        this.vides = vides;
+    }
+
     public String getPalabraEndevinada() {
         return palabraEndevinada;
     }
 
     public void setPalabraEndevinada(String palabraEndevinada) {
+        for (int i=0; i < palabraEndevinada.length(); i++){
+            if (palabraEndevinada.charAt(i) != ' '){
+                char[] myNameChars = palabraEndevinada.toCharArray();
+                myNameChars[i] = '_';
+                palabraEndevinada = String.valueOf(myNameChars);
+            }
+        }
         this.palabraEndevinada = palabraEndevinada;
     }
 
@@ -38,10 +53,13 @@ public class Tauler {
 
     public void setParaulaSecreta(String paraulaSecreta) {
         this.paraulaSecreta = paraulaSecreta;
-    }
-
-    public void inicialitzarPartida() {
-
+    }    
+    
+    public void inicialitzarPartida(String paraula, int intents){
+        setParaulaSecreta(paraula);
+        setPalabraEndevinada(paraula);
+        setIntents(intents);
+        setVides(intents);
     }
 
     public String imprimir() {
@@ -66,6 +84,14 @@ public class Tauler {
             intents -= 1;
         }
         return " ";
+    }
+    
+    public boolean hasGuanyat(){
+        if (palabraEndevinada.equals(palabraEndevinada)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void hasGuanyat() {
